@@ -1,50 +1,27 @@
-# Welcome to your Expo app 👋
+# ♿ RollEase: Aplikasi Navigasi Aksesibilitas Berbasis Visual-Preview
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+RollEase merupakan aplikasi mobile berbasis sistem navigasi aksesibel yang dirancang untuk membantu pengguna kursi roda dalam menentukan rute perjalanan yang aman, nyaman, dan ramah disabilitas. Aplikasi ini dikembangkan untuk mengatasi berbagai hambatan mobilitas yang sering dihadapi oleh penyandang disabilitas fisik di ruang publik.
 
-## Get started
+Proyek ini dikembangkan sebagai bagian dari Program Kreativitas Mahasiswa - Karsa Cipta (PKM-KC) 2025.
 
-1. Install dependencies
+## ✨ Fitur Utama
 
-   ```bash
-   npm install
-   ```
+RollEase memiliki tiga modul utama yang saling terintegrasi:
 
-2. Start the app
+* **Navigasi Accessible:** Algoritma penentuan rute yang dirancang untuk memprioritaskan jalur bebas tangga dan mempertimbangkan kondisi jalur yang paling aman bagi pengguna kursi roda.
+* **Visual Path-Mapping (Visual-Preview):** Menyediakan galeri foto atau visual kondisi jalur pada titik-titik kritis sepanjang rute perjalanan. Fitur ini memungkinkan pengguna menilai aksesibilitas jalur sebelum melaluinya.
+* **Reporting System (Crowdsourcing):** Memungkinkan pengguna dan komunitas (*Mapper*) untuk melaporkan secara langsung berbagai hambatan mendadak (seperti jalan rusak atau galian) maupun memetakan titik aksesibilitas (ramp, lift) secara *real-time*.
 
-   ```bash
-   npx expo start
-   ```
+## 🛠️ Teknologi yang Digunakan
 
-In the output, you'll find options to open the app in a
+Aplikasi ini dibangun dengan mengintegrasikan sistem pemetaan komunitas dan pengolahan data spasial:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+* **Frontend:** Android Mobile App (Desain UI/UX menggunakan Figma)
+* **Pemetaan:** OpenStreetMap (OSM) - Map database gratis berbasis komunitas *volunteer*.
+* **Backend & Database:** PostGIS - Spatial database management system untuk menyimpan dan memanipulasi data objek spasial rute.
+* **Hardware & AI (Prototipe):** Jetson Nano 4GB, Sensor IMU, dan Kamera USB.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 👥 Tim Pengembang (PKM-KC)
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Proyek ini dikembangkan oleh tim mahasiswa dari Bina Nusantara University:
+* **Alvist Cruise** - Ketua Tim / Project Manager & UI/UX
