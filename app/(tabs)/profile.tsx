@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { LinearGradient } from 'expo-linear-gradient';
 import {
   StyleSheet,
   View,
@@ -325,26 +326,47 @@ export default function ProfileScreen() {
 
   const isDark = colorScheme === 'dark';
 
-  return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={[styles.container, { backgroundColor: isDark ? '#151718' : '#F3F4F6' }]}
-    >
-      {user || isGuest ? (
-        renderProfile()
-      ) : showAuthForm ? (
-        renderAuthForm()
-      ) : (
-        renderLanding()
-      )}
-    </KeyboardAvoidingView>
-  );
-}
+    // Kita buat pengaturan warna gradien yang pasti:
+    // Jika isDark: Biru tua transparan memudar ke warna latar dark mode (#151718)
+    // Jika light: Biru muda transparan memudar ke warna latar light mode (#F3F4F6)
+    const gradientColors = isDark
+      ? ['#0a7ea430', '#151718']
+      : ['#0a7ea415', '#F3F4F6'];
+
+    return (
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          // Berikan warna dasar yang sesuai agar saat di-scroll mentok (bounce) tidak terlihat putih
+          style={[styles.container, { backgroundColor: isDark ? '#151718' : '#F3F4F6' }]}
+        >
+          <LinearGradient
+            colors={gradientColors}
+            start={{ x: 0.5, y: 0 }}
+            end={{ x: 0.5, y: 1 }}
+            style={styles.gradient}
+          >
+            {user || isGuest ? (
+              renderProfile()
+            ) : showAuthForm ? (
+              renderAuthForm()
+            ) : (
+              renderLanding()
+            )}
+          </LinearGradient>
+        </KeyboardAvoidingView>
+      );
+    }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
+      flex: 1,
+      // Hapus background color solid di sini jika kamu menggunakan style.container di KeyboardAvoidingView
+    },
+    // --- TAMBAHKAN STYLE BARU INI ---
+    gradient: {
+      flex: 1, // Pastikan gradien memenuhi seluruh area container
+    },
+    // ... rest of existing styles
   scrollContainer: {
     flexGrow: 1,
     justifyContent: 'center',

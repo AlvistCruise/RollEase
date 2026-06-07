@@ -9,6 +9,7 @@ import {
   StatusBar,
   Platform,
 } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { useApp, HistoryItem, FavoriteItem, Place } from '@/contexts/AppContext';
 import { useColorScheme } from '@/hooks/use-color-scheme';
@@ -168,117 +169,136 @@ export default function SavedScreen() {
 
   const isDark = colorScheme === 'dark';
 
-  return (
-    <SafeAreaView style={[styles.container, { backgroundColor: isDark ? '#151718' : '#F3F4F6' }]}>
-      <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
+    const gradientColors = isDark
+      ? ['#0a7ea430', '#151718']
+      : ['#0a7ea415', '#F3F4F6'];
 
-      {/* Screen Title */}
-      <View style={styles.header}>
-        <Text style={[styles.headerTitle, { color: themeColors.text }]}>Saved Routes</Text>
-        {activeTab === 'history' && history.length > 0 && (
-          <TouchableOpacity onPress={clearHistory}>
-            <Text style={styles.clearAllText}>Clear All</Text>
-          </TouchableOpacity>
-        )}
-      </View>
-
-      {/* Segmented Tab Controls */}
-      <View style={[styles.tabBar, { backgroundColor: isDark ? '#1F2224' : '#E5E7EB' }]}>
-        <TouchableOpacity
-          style={[
-            styles.tab,
-            activeTab === 'history' && [styles.activeTab, { backgroundColor: isDark ? '#3D4144' : '#fff' }],
-          ]}
-          onPress={() => setActiveTab('history')}
+    return (
+      <View style={[styles.container, { backgroundColor: isDark ? '#151718' : '#F3F4F6' }]}>
+        <LinearGradient
+          colors={gradientColors}
+          start={{ x: 0.5, y: 0 }}
+          end={{ x: 0.5, y: 1 }}
+          style={styles.gradient}
         >
-          <MaterialIcons
-            name="history"
-            size={18}
-            color={activeTab === 'history' ? '#0a7ea4' : isDark ? '#9BA1A6' : '#687076'}
-            style={{ marginRight: 6 }}
-          />
-          <Text
-            style={[
-              styles.tabText,
-              { color: activeTab === 'history' ? '#0a7ea4' : isDark ? '#9BA1A6' : '#687076' },
-              activeTab === 'history' && styles.activeTabText,
-            ]}
-          >
-            History
-          </Text>
-        </TouchableOpacity>
+          <SafeAreaView style={styles.safeArea}>
+            <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
 
-        <TouchableOpacity
-          style={[
-            styles.tab,
-            activeTab === 'favorites' && [styles.activeTab, { backgroundColor: isDark ? '#3D4144' : '#fff' }],
-          ]}
-          onPress={() => setActiveTab('favorites')}
-        >
-          <MaterialIcons
-            name="star"
-            size={18}
-            color={activeTab === 'favorites' ? '#EAB308' : isDark ? '#9BA1A6' : '#687076'}
-            style={{ marginRight: 6 }}
-          />
-          <Text
-            style={[
-              styles.tabText,
-              { color: activeTab === 'favorites' ? '#EAB308' : isDark ? '#9BA1A6' : '#687076' },
-              activeTab === 'favorites' && styles.activeTabText,
-            ]}
-          >
-            Favorites
-          </Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* Lists */}
-      {activeTab === 'history' ? (
-        history.length > 0 ? (
-          <FlatList
-            data={history}
-            keyExtractor={(item) => item.id}
-            renderItem={renderHistoryItem}
-            contentContainerStyle={styles.listContainer}
-            showsVerticalScrollIndicator={false}
-          />
-        ) : (
-          <View style={styles.emptyContainer}>
-            <View style={[styles.emptyIconBg, { backgroundColor: isDark ? '#1F2224' : '#fff' }]}>
-              <FontAwesome5 name="wheelchair" size={48} color="#9BA1A6" />
+            {/* Screen Title */}
+            <View style={styles.header}>
+              <Text style={[styles.headerTitle, { color: themeColors.text }]}>Saved Routes</Text>
+              {activeTab === 'history' && history.length > 0 && (
+                <TouchableOpacity onPress={clearHistory}>
+                  <Text style={styles.clearAllText}>Clear All</Text>
+                </TouchableOpacity>
+              )}
             </View>
-            <Text style={[styles.emptyTitle, { color: themeColors.text }]}>No Route History</Text>
-            <Text style={[styles.emptySubtitle, { color: isDark ? '#9BA1A6' : '#687076' }]}>
-              Your recently started routes will show up here to help you navigate quickly.
-            </Text>
-          </View>
-        )
-      ) : favorites.length > 0 ? (
-        <FlatList
-          data={favorites}
-          keyExtractor={(item) => item.id}
-          renderItem={renderFavoriteItem}
-          contentContainerStyle={styles.listContainer}
-          showsVerticalScrollIndicator={false}
-        />
-      ) : (
-        <View style={styles.emptyContainer}>
-          <View style={[styles.emptyIconBg, { backgroundColor: isDark ? '#1F2224' : '#fff' }]}>
-            <MaterialIcons name="star-outline" size={54} color="#9BA1A6" />
-          </View>
-          <Text style={[styles.emptyTitle, { color: themeColors.text }]}>No Favorite Places</Text>
-          <Text style={[styles.emptySubtitle, { color: isDark ? '#9BA1A6' : '#687076' }]}>
-            Star a location on the map screen to save it for quick wheelchair routing access.
-          </Text>
-        </View>
-      )}
-    </SafeAreaView>
-  );
-}
+
+            {/* Segmented Tab Controls */}
+            <View style={[styles.tabBar, { backgroundColor: isDark ? '#1F2224' : '#E5E7EB' }]}>
+              <TouchableOpacity
+                style={[
+                  styles.tab,
+                  activeTab === 'history' && [styles.activeTab, { backgroundColor: isDark ? '#3D4144' : '#fff' }],
+                ]}
+                onPress={() => setActiveTab('history')}
+              >
+                <MaterialIcons
+                  name="history"
+                  size={18}
+                  color={activeTab === 'history' ? '#0a7ea4' : isDark ? '#9BA1A6' : '#687076'}
+                  style={{ marginRight: 6 }}
+                />
+                <Text
+                  style={[
+                    styles.tabText,
+                    { color: activeTab === 'history' ? '#0a7ea4' : isDark ? '#9BA1A6' : '#687076' },
+                    activeTab === 'history' && styles.activeTabText,
+                  ]}
+                >
+                  History
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={[
+                  styles.tab,
+                  activeTab === 'favorites' && [styles.activeTab, { backgroundColor: isDark ? '#3D4144' : '#fff' }],
+                ]}
+                onPress={() => setActiveTab('favorites')}
+              >
+                <MaterialIcons
+                  name="star"
+                  size={18}
+                  color={activeTab === 'favorites' ? '#EAB308' : isDark ? '#9BA1A6' : '#687076'}
+                  style={{ marginRight: 6 }}
+                />
+                <Text
+                  style={[
+                    styles.tabText,
+                    { color: activeTab === 'favorites' ? '#EAB308' : isDark ? '#9BA1A6' : '#687076' },
+                    activeTab === 'favorites' && styles.activeTabText,
+                  ]}
+                >
+                  Favorites
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            {/* Lists */}
+            {activeTab === 'history' ? (
+              history.length > 0 ? (
+                <FlatList
+                  data={history}
+                  keyExtractor={(item) => item.id}
+                  renderItem={renderHistoryItem}
+                  contentContainerStyle={styles.listContainer}
+                  showsVerticalScrollIndicator={false}
+                />
+              ) : (
+                <View style={styles.emptyContainer}>
+                  <View style={[styles.emptyIconBg, { backgroundColor: isDark ? '#1F2224' : '#fff' }]}>
+                    <FontAwesome5 name="wheelchair" size={48} color="#9BA1A6" />
+                  </View>
+                  <Text style={[styles.emptyTitle, { color: themeColors.text }]}>No Route History</Text>
+                  <Text style={[styles.emptySubtitle, { color: isDark ? '#9BA1A6' : '#687076' }]}>
+                    Your recently started routes will show up here to help you navigate quickly.
+                  </Text>
+                </View>
+              )
+            ) : favorites.length > 0 ? (
+              <FlatList
+                data={favorites}
+                keyExtractor={(item) => item.id}
+                renderItem={renderFavoriteItem}
+                contentContainerStyle={styles.listContainer}
+                showsVerticalScrollIndicator={false}
+              />
+            ) : (
+              <View style={styles.emptyContainer}>
+                <View style={[styles.emptyIconBg, { backgroundColor: isDark ? '#1F2224' : '#fff' }]}>
+                  <MaterialIcons name="star-outline" size={54} color="#9BA1A6" />
+                </View>
+                <Text style={[styles.emptyTitle, { color: themeColors.text }]}>No Favorite Places</Text>
+                <Text style={[styles.emptySubtitle, { color: isDark ? '#9BA1A6' : '#687076' }]}>
+                  Star a location on the map screen to save it for quick wheelchair routing access.
+                </Text>
+              </View>
+            )}
+          </SafeAreaView>
+        </LinearGradient>
+      </View>
+    );
+  }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  gradient: {
+    flex: 1,
+  },
+  safeArea: {
     flex: 1,
   },
   header: {
@@ -483,5 +503,55 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: 'center',
     lineHeight: 20,
+  },
+avatarImage: {
+    width: 90,
+    height: 90,
+    borderRadius: 45,
+    marginBottom: 16,
+  },
+  editIconBadge: {
+    position: 'absolute',
+    bottom: 16,
+    right: 0,
+    backgroundColor: '#0a7ea4',
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 2,
+    borderColor: '#fff',
+  },
+  bioText: {
+    fontSize: 14,
+    fontStyle: 'italic',
+    textAlign: 'center',
+    marginTop: 8,
+    marginBottom: 16,
+    paddingHorizontal: 20,
+  },
+  editProfileBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(10, 126, 164, 0.1)',
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 20,
+    marginTop: 8,
+  },
+  editProfileText: {
+    color: '#0a7ea4',
+    fontWeight: '700',
+    marginLeft: 6,
+    fontSize: 14,
+  },
+  editFormContainer: {
+    width: '100%',
+    marginTop: 12,
+  },
+  editActions: {
+    flexDirection: 'row',
+    marginTop: 16,
   },
 });
