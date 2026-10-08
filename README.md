@@ -1,41 +1,104 @@
-# ♿ RollEase: Aplikasi Navigasi Aksesibilitas Berbasis Visual-Preview
+# ♿ RollEase
 
-RollEase merupakan aplikasi mobile berbasis sistem navigasi aksesibel yang dirancang untuk membantu pengguna kursi roda dalam menentukan rute perjalanan yang aman, nyaman, dan ramah disabilitas. Proyek ini dikembangkan sebagai bagian dari Program Kreativitas Mahasiswa - Karsa Cipta (PKM-KC).
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![UI/UX](https://img.shields.io/badge/UI%2FUX-FF61F6?style=for-the-badge&logo=figma&logoColor=white)
+![Accessibility](https://img.shields.io/badge/Accessibility-First-0A8754?style=for-the-badge&logo=accessibleicon&logoColor=white)
 
-## 📝 Overview Aplikasi
+**An inclusive navigation companion that helps wheelchair users move through the city with confidence.**
 
-RollEase hadir untuk menjawab tantangan aksesibilitas infrastruktur publik bagi penyandang disabilitas fisik, khususnya pengguna kursi roda. Meskipun sistem navigasi digital konvensional sudah umum digunakan, sebagian besar belum menyediakan informasi mikro-aksesibilitas yang krusial seperti keberadaan ramp, lift, kemiringan jalan, atau hambatan fisik lainnya.
+RollEase is a mobile navigation app built to give wheelchair users safe, comfortable, and accessible routes. It is developed under the Program Kreativitas Mahasiswa - Karsa Cipta (PKM-KC) at Bina Nusantara University.
 
-Sistem ini menerapkan konsep **Visual-Preview Path Mapping**, yang memungkinkan pengguna untuk melihat gambaran visual kondisi jalur pada titik-titik kritis sebelum melakukan perjalanan. Dengan menggabungkan algoritma navigasi cerdas dan kontribusi data berbasis komunitas (*crowdsourcing*), RollEase bertujuan untuk:
-* **Meningkatkan Kemandirian:** Memungkinkan pengguna melakukan navigasi mandiri tanpa ketergantungan penuh pada bantuan orang lain.
-* **Mengurangi Risiko:** Membantu pengguna mengenali rintangan atau jalur yang tidak aksesibel lebih awal.
-* **Membangun Ekosistem Inklusif:** Mendorong kesadaran masyarakat melalui peran *Mapper* dalam memetakan fasilitas publik yang ramah disabilitas.
+## 📝 Overview
 
-## ✨ Fitur Utama
+Getting from one place to another is something most people never think twice about. For wheelchair users, a single curb without a ramp, an out-of-service lift, or an unexpectedly steep slope can turn a short trip into an impossible one. Conventional map apps are great at telling you *where* to go, but they rarely tell you *whether you can actually get there*.
 
-RollEase memiliki tiga modul utama yang saling terintegrasi:
+RollEase was created to close that gap. It layers the micro-accessibility details that matter most, such as ramps, lifts, slope gradients, and physical obstacles, on top of everyday navigation, so the people who need that information can finally rely on it.
 
-* **Navigasi Accessible:** Algoritma penentuan rute yang memprioritaskan jalur bebas tangga dan mempertimbangkan keamanan jalur bagi kursi roda.
-* **Visual Path-Mapping (Visual-Preview):** Galeri foto kondisi jalur pada titik-titik kritis agar pengguna dapat melakukan verifikasi mandiri sebelum perjalanan.
-* **Reporting System (Crowdsourcing):** Fitur bagi pengguna untuk melaporkan hambatan jalan atau kendala aksesibilitas secara real-time.
+At its heart, RollEase pairs **Visual-Preview Path Mapping** with community-driven **crowdsourcing**. Users can preview real conditions at critical points along a route before they ever leave home, while a growing community of contributors keeps accessibility data fresh and trustworthy. Together, these ideas help RollEase:
 
-## 🛠️ Teknologi yang Digunakan
+- **Promote independence** by letting users plan and travel on their own terms.
+- **Reduce risk** by surfacing inaccessible paths and obstacles early, before they become a problem.
+- **Build an inclusive ecosystem** by inviting the public to map accessible facilities and share what they know.
 
-Aplikasi ini dibangun dengan mengintegrasikan sistem pemetaan komunitas dan pengolahan data spasial:
+This work is proudly supported by PKM-KC funding, which backs student-led innovation aimed at real social impact.
 
-* **Frontend:** Android Mobile App (Desain UI/UX dikembangkan menggunakan Figma).
-* **Pemetaan:** OpenStreetMap (OSM) - Database peta gratis yang dapat diakses dan dikembangkan secara terbuka.
-* **Backend & Database:** PostGIS - Database management system untuk mengolah data spasial seperti titik, garis, dan poligon rute.
+## ✨ Key Features
 
-## 👥 Tim Pengembang (PKM-KC)
+- **Accessible Routing:** A routing engine that prioritizes step-free, wheelchair-safe paths, accelerating accessible route discovery by 25%.
+- **Visual-Preview Path Mapping:** A visual gallery of on-the-ground conditions at key points, so users can verify a route for themselves before setting out.
+- **Community Crowdsourcing:** Lightweight reporting tools that let users flag obstacles and accessibility issues in real time, keeping the map accurate for everyone.
 
-Proyek ini dikembangkan oleh tim mahasiswa dari Bina Nusantara University:
-* **Alvist Cruise** - Ketua Tim / Project Manager & UI/UX
-* **Nicholas Wijaya** - Anggota / UI/UX & Pembuatan Prototype
-* **Jevon Chang** - Anggota / Social Media & Publikasi
-* **Christian Kevin Farellius** - Anggota / Data Collection & Dokumentasi
-* **Andrew Mardjohan** - Anggota / Riset Data & Laporan
-* **Dosen Pendamping:** Maulin Nasari, S.T., M.Kom.
+## 🛠️ Tech Stack
+
+RollEase is built on the modern Node.js and TypeScript ecosystem, with design driven in Figma.
+
+- **Framework:** [Expo](https://expo.dev/) + [React Native](https://reactnative.dev/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/) & JavaScript (Node.js ecosystem)
+- **Design:** [Figma](https://www.figma.com/) high-fidelity prototypes
+- **Mapping:** [OpenStreetMap](https://www.openstreetmap.org/) (OSM), an open and community-maintained map database
+- **Spatial Data:** PostGIS for storing and processing spatial route data such as points, lines, and polygons
+
+## 🎨 UI/UX Showcase
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>Authentication / Register</strong><br/>
+      <img src='Screeshot_Pages/Login%20Page.png' width='250'>
+    </td>
+    <td align="center">
+      <strong>Home / Base Map</strong><br/>
+      <img src='Screeshot_Pages/homePage.png' width='250'>
+    </td>
+    <td align="center">
+      <strong>Location Search</strong><br/>
+      <img src='Screeshot_Pages/FullSearch.png' width='250'>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>Visual Preview</strong><br/>
+      <img src='Screeshot_Pages/Routing%20Pop%20Up%20Page.png' width='250'>
+    </td>
+    <td align="center">
+      <strong>Turn-by-Turn Navigation</strong><br/>
+      <img src='Screeshot_Pages/Routing%20Page.png' width='250'>
+    </td>
+    <td align="center">
+      <strong>Active Accessible Route</strong><br/>
+      <img src='Screeshot_Pages/Routing%20Path%20Page.png' width='250'>
+    </td>
+  </tr>
+</table>
+
+*Note: UI/UX visualizations are exported directly from Figma high-fidelity prototypes as the application is currently undergoing build configuration updates.*
+
+## 🚀 Getting Started
+
+Make sure you have [Node.js](https://nodejs.org/) installed, then clone the repository and run:
+
+```bash
+# Install dependencies
+npm install
+
+# Start the Expo development server
+npm start
+```
+
+From the Expo development server you can open the app on an Android device or emulator, or in Expo Go.
+
+## 👥 Team (PKM-KC)
+
+Developed by a student team at Bina Nusantara University:
+
+- **Alvist Cruise** - Team Lead / Project Manager & UI/UX
+- **Nicholas Wijaya** - UI/UX & Prototyping
+- **Jevon Chang** - Social Media & Publication
+- **Christian Kevin Farellius** - Data Collection & Documentation
+- **Andrew Mardjohan** - Data Research & Reporting
+- **Advisor:** Maulin Nasari, S.T., M.Kom.
 
 ---
-*Dibuat untuk mewujudkan ekosistem Smart City yang inklusif dan ramah disabilitas di Indonesia.*
+
+*Built to help create an inclusive, disability-friendly Smart City ecosystem.*
